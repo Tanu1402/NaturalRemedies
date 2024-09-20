@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Subscription - Natural Remedies Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Example CSS for centering heading and aligning content */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3ece6; /* Fallback color */
+            background-attachment: fixed; /* Fixed background */
+            background-position: center; /* Center the background image */
+            background-size: cover; /* Cover the entire viewport */
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(185, 240, 193, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            position: none;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Navigation styles */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Main content styles */
+        main {
+            padding: 20px;
+            margin-top: 10px; /* Space to avoid overlap with sticky header */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            text-align: center;
+        }
+
+        /* Form styles */
+        .subscription-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .subscription-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .subscription-form input[type="text"],
+        .subscription-form input[type="email"],
+        .subscription-form input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .subscription-form .subscribe-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .subscription-form .subscribe-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Payment link styles */
+        #paymentLink {
+            display: none;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        #paymentLink:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Holistic-Health</h1>
+        <p>Your source for natural health solutions</p>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="pro-subscription.html">Pro-Subscription</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="add-on.html">Add-on</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Subscribe to Pro Subscription</h2>
+        <p>Unlock the full potential of natural remedies with our Pro Subscription:</p>
+        <ul style="text-align: left;">
+            <li>Access to exclusive natural remedy guides</li>
+            <li>Monthly webinars with health experts</li>
+            <li>Personalized health tips and recommendations</li>
+            <li>Priority support and consultation</li>
+            <li>Exclusive discounts on health products</li>
+        </ul>
+        <div class="subscription-form">
+            <form id="subscriptionForm" onsubmit="handleFormSubmission(event)">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="contactNumber">Contact Number:</label>
+                <input type="tel" id="contactNumber" name="contactNumber" required>
+
+                <label for="subscriptionType">Subscription Type:</label><br>
+                <input type="radio" id="monthly" name="subscriptionType" value="monthly" checked>
+                <label for="monthly">Monthly (299/-)</label><br>
+                <input type="radio" id="yearly" name="subscriptionType" value="yearly">
+                <label for="yearly">Yearly (3349/-)</label><br><br>
+
+                <button type="submit" class="subscribe-btn">Subscribe</button>
+            </form>
+            <a id="paymentLink" href="" target="_blank">Proceed to Payment</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Holistic-Health. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function handleFormSubmission(event) {
+            event.preventDefault();
+
+            // Extract form data
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const contactNumber = document.getElementById('contactNumber').value;
+            const subscriptionType = document.querySelector('input[name="subscriptionType"]:checked').value;
+
+            // Example validation (you can add more validation logic as per your requirements)
+            if (fullName.trim() === '' || email.trim() === '' || contactNumber.trim() === '') {
+                alert('Please fill out all fields.');
+                return;
+            }
+
+            // Construct the payment URL based on the subscription type
+            let paymentUrl = '';
+            if (subscriptionType === 'monthly') {
+                paymentUrl = 'upi://pay?pa=tompalatanishasari77@oksbi&pn=Tanisha&am=299&tn=Monthly%20subscription&cu=INR';
+            } else if (subscriptionType === 'yearly') {
+                paymentUrl = 'upi://pay?pa=tompalatanishasari77@oksbi&pn=Tanisha&am=3349&tn=Yearly%20subscription&cu=INR';
+            }
+
+            // Set the payment link and make it visible
+            const paymentLink = document.getElementById('paymentLink');
+            paymentLink.href = paymentUrl;
+            paymentLink.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

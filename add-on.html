@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add-on Details - Natural Remedies Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" defer></script>
+    <style>
+        /* Example CSS for centering heading and aligning content */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f3ece6; /* Fallback color */
+            background-attachment: fixed; /* Fixed background */
+            background-position: center; /* Center the background image */
+            background-size: cover; /* Cover the entire viewport */
+        }
+
+        /* Header styles */
+        header {
+            background-color: rgba(185, 240, 193, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            position: none;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Navigation styles */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Main content styles */
+        main {
+            padding: 20px;
+            margin-top: 10px; /* Space to avoid overlap with sticky header */
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            text-align: center;
+        }
+
+        /* Form styles */
+        .add-on-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .add-on-form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .add-on-form input[type="text"],
+        .add-on-form input[type="email"],
+        .add-on-form input[type="tel"],
+        .add-on-form input[type="file"],
+        .add-on-form input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .add-on-form .upload-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-on-form .upload-btn:hover {
+            background-color: #45a049;
+        }
+
+        .add-on-form .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-on-form .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Holistic-Health</h1>
+        <p>Your source for natural health solutions</p>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="pro-subscription.html">Pro-Subscription</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="add-on.html">Add-on</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Add-on Details</h2>
+        <div class="add-on-form">
+            <form id="addOnForm" action="#" method="POST" enctype="multipart/form-data" onsubmit="handleFormSubmission(event)">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="contactNumber">Contact Number:</label>
+                <input type="tel" id="contactNumber" name="contactNumber" required>
+
+                <label for="uploadFile">Upload File:</label>
+                <input type="file" id="uploadFile" name="uploadFile">
+
+                <label for="upiID">UPI ID:</label>
+                <input type="text" id="upiID" name="upiID" required>
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Holistic-Health. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function handleFormSubmission(event) {
+            event.preventDefault();
+
+            // Extract form data
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const contactNumber = document.getElementById('contactNumber').value;
+            const uploadFile = document.getElementById('uploadFile').files[0];
+            const upiID = document.getElementById('upiID').value;
+
+            // Example validation (you can add more validation logic as per your requirements)
+            if (fullName.trim() === '' || email.trim() === '' || contactNumber.trim() === '' || upiID.trim() === '') {
+                alert('Please fill out all required fields.');
+                return;
+            }
+
+            // Example file size validation (optional)
+            if (uploadFile && uploadFile.size > 5 * 1024 * 1024) { // 5 MB (size in bytes)
+                alert('File size exceeds the limit of 5 MB.');
+                return;
+            }
+
+            // Prepare form data to send (example: using FormData for file upload)
+            const formData = new FormData();
+            formData.append('fullName', fullName);
+            formData.append('email', email);
+            formData.append('contactNumber', contactNumber);
+            formData.append('upiID', upiID);
+            if (uploadFile) {
+                formData.append('uploadFile', uploadFile);
+            }
+
+            // Simulate AJAX submission (replace with actual AJAX call)
+            // Example URL for submission
+            const submitUrl = 'https://example.com/submit-addon';
+
+            // Example of using fetch API for AJAX submission
+            fetch(submitUrl, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text(); // or response.json() if expecting JSON response
+            })
+            .then(data => {
+                alert('Form submitted successfully!');
+                console.log(data); // log response data
+                // Optionally redirect or update UI after successful submission
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was a problem with form submission. Please try again later.');
+            });
+        }
+    </script>
+</body>
+</html>
